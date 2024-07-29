@@ -29,6 +29,143 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <style>
+      .menu-icon {
+        cursor: pointer;
+      }
+      .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: #F5F5F5;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: right 0.3s ease;
+      }
+      .menu.open {
+        right: 0;
+      }
 
+      .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 3rem;
+      }
+
+      .menu ul li {
+        margin: 20px 0;
+        text-align: center;
+        text-align: start;
+        margin-left: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .menu ul li a {
+        text-decoration: none;
+        color: #003366;
+        font-size: 18px;
+      }
+
+      .menu ul li .quote-button {
+        background-color: #FFCC33;
+        color: #003366;
+        padding: 0.7rem 1rem;
+        width: 75%;
+        border: 0;
+        border-radius: 2rem;
+        margin-bottom: 4rem;
+        font-family: 'Mont';
+        font-size: 1rem;
+        font-weight: 500;
+
+      }
+
+      .header {
+        background-image: url('https://fedesagency.com/solarCaseres/fondoSuperiorMobile.jpg');
+        display: flex;
+        flex-direction: column;
+        background-size: cover
+      }
+      .header .headerSup {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        justify-content: space-between;
+      }
+      .header .headerBottom {
+
+      }
+      .header .headerBottom .headerTextArea {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .header .headerBottom .headerTextArea .titleHeader{
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: #F5F5F5;
+      }
+      .header .headerBottom .headerTextArea .parrafoHeader {
+        color: #F5F5F5;
+        text-align: center;
+        padding: 1rem;
+      }
+      .header .headerBottom .buttonsContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        align-items: center;
+      }
+      .header .headerBottom .buttonsContainer .buttonProduct{
+        background-color: #003366;
+        color: #F5F5F5;
+        padding: 0.7rem 1rem;
+        width: 75%;
+        border: 0;
+        border-radius: 2rem;
+        margin-bottom: 2rem;
+        font-family: 'Mont';
+        font-size: 1rem;
+      }
+      .header .headerBottom .buttonsContainer .buttonInfo {
+        background-color: #FFCC33;
+        color: #F5F5F5;
+        padding: 0.7rem 1rem;
+        width: 75%;
+        border: 0;
+        border-radius: 2rem;
+        margin-bottom: 4rem;
+        font-family: 'Mont';
+        font-size: 1rem;
+      }
+
+      .main-content .nosotrosContainer {
+        margin-top: 3rem;
+      }
+      .main-content .nosotrosContainer .titleNosotros {
+        background-color: #003366;
+        width: fit-content;
+        color: #F5F5F5;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .main-content .nosotrosContainer .parrafoNosotros {
+        padding: 1rem;
+        margin-top: 0rem;
+      }
+      .main-content .nosotrosContainer .iconsContainer{
+        display: flex;
+        margin-bottom: 6rem;
+      }
+      .main-content .nosotrosContainer .iconsContainer .iconos2 {
+        position: relative;
+        top: 4rem;
+      }
+    </style>
   </body>
 </html>
