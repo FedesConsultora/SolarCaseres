@@ -4,13 +4,13 @@ import { getAnalytics } from "firebase/analytics";
 
 // Configuración de Firebase de tu proyecto
 const firebaseConfig = {
-    apiKey: "AIzaSyAGVR-c5UVfspdZLmeNd9MFLrj7WYjBOqk",
-    authDomain: "solarcasares-fa061.firebaseapp.com",
-    projectId: "solarcasares-fa061",
-    storageBucket: "solarcasares-fa061.appspot.com",
-    messagingSenderId: "165106844906",
-    appId: "1:165106844906:web:6869e0a346daa8ad140393",
-    measurementId: "G-9J71GKPFV6"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializar Firebase
