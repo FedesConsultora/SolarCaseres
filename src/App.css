@@ -197,7 +197,6 @@ html {
 .header .headerBottom .headerTextArea .check-animation{
   position: relative;
   bottom: 1.5rem;
-  width: 100%;
 }
 .header .headerBottom .headerTextArea .titleHeader.thank{
   position: relative;
@@ -210,8 +209,6 @@ html {
 }
 .header .headerBottom .headerTextArea .titleHeader{
   text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 2rem;
   color: #F5F5F5;
@@ -586,8 +583,6 @@ html {
   display: flex;
   justify-content: center;
   
-}
-.contenedorDos {
 }
 .contactContainer .mapButtons .locationButtonDos{
   width: 100%;
