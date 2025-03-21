@@ -3,9 +3,10 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db, analytics } from '../firebase.js'; 
 import { logEvent } from 'firebase/analytics';
 import Swal from 'sweetalert2';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 const ContactForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,34 +14,61 @@ const ContactForm = () => {
     message: ''
   });
 
+  // URL de tu Apps Script
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxXc7Iz9_rEexpgESUChma97ZQ2N1FuaoPEfMAErQvaj1XS_uAkAQbuC_mWP6xWf-G8/exec";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // 1) Guardar en Firebase
       await addDoc(collection(db, 'contactMessages'), formData);
       logEvent(analytics, 'form_submission', {
         ...formData,
         message_length: formData.message.length
       });
+
+      // 2) Enviar a Google Sheet con no-cors
+      //    Creamos el body con URLSearchParams (x-www-form-urlencoded)
+      const params = new URLSearchParams();
+      params.append('type', 'form');
+      params.append('name', formData.name);
+      params.append('email', formData.email);
+      params.append('phone', formData.phone);
+      params.append('message', formData.message);
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          // Para no-cors, 'Content-Type' debe ser "application/x-www-form-urlencoded" 
+          // o no poner cabecera. 
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params.toString()
+      });
+      // Con no-cors no podemos usar .then(res => res.json()), no tendremos acceso a la respuesta
+
+      // 3) SweetAlert
       Swal.fire({
         title: '¡Gracias por consultar!',
         icon: 'success',
         confirmButtonColor: '#FFCC33'
       });
-      // Limpio el formulario
+
+      // 4) Limpiar formulario
       setFormData({ name: '', email: '', phone: '', message: '' });
-      // Redirecciono a /thank-you
-      Navigate('/thank-you');
+
+      // 5) Redirigir a /thank-you
+      navigate('/thank-you');
+
     } catch (error) {
       console.error('Error al enviar mensaje:', error);
-      alert('Error al enviar. Intenta de nuevo.');
+      alert('Error al enviar. Por favor inténtalo de nuevo.');
     }
   };
 
@@ -87,7 +115,7 @@ const ContactForm = () => {
         <textarea
           id="message"
           name="message"
-          placeholder="Hola, estoy interesado en sus productos y me gustaría recibir más información."
+          placeholder="Hola, estoy interesado en sus productos."
           value={formData.message}
           onChange={handleChange}
           required

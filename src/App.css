@@ -110,6 +110,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  
 }
 .menu-icon {
   cursor: pointer;
@@ -123,6 +124,7 @@ html {
   background-color: #F5F5F5;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: right 0.3s ease;
+
 }
 .menu.open {
   right: 0;
@@ -142,7 +144,9 @@ html {
   margin-left: 1.5rem;
   margin-bottom: 2rem;
 }
-
+.App{
+  overflow: hidden;
+}
 .menu ul li a {
   text-decoration: none;
   color: #003366;
@@ -194,18 +198,22 @@ html {
   display: flex;
   flex-direction: column;
 }
+.header .headerBottom .headerTextArea.thank {
+  padding: 0;
+}
 .header .headerBottom .headerTextArea .check-animation{
-  position: relative;
-  bottom: 1.5rem;
+  position: absolute;
+  top: 3rem;
+  width: 100%;
 }
 .header .headerBottom .headerTextArea .titleHeader.thank{
   position: relative;
-  bottom: 6.5rem;
   font-size: 3rem;
+  margin-top: 8rem;
 }
 .header .headerBottom .headerTextArea .parrafoHeader.thank {
   position: relative;
-  bottom: 8rem;
+  bottom: 4rem;
 }
 .header .headerBottom .headerTextArea .titleHeader{
   text-align: center;
